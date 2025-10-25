@@ -405,17 +405,23 @@ void app_main(void) {
 
 ### คำถามสำหรับการทดลอง
 1. เมื่อ Producers มากกว่า Resources จะเกิดอะไรขึ้น?
+- Task จะ ถูก Blocked รอ semaphore จนกว่าจะมี resource ว่าง
 2. Load Generator มีผลต่อ Success Rate อย่างไร?
+- Success Rate ต่ำลง เพราะ task ต้องรอ resource นานหรือ queue เต็ม
 3. Counting Semaphore จัดการ Resource Pool อย่างไร?
+- Semaphore ค่าเริ่มต้น = จำนวน resource
+- Take → ลดค่า semaphore (claim resource)
+- Give → เพิ่มค่า semaphore (release resource)
+- ช่วย จัดการจำนวน resource ที่ใช้พร้อมกันได้อย่างปลอดภัย
 
 ## 📋 สรุปผลการทดลอง
 
 ### สิ่งที่เรียนรู้:
-- [ ] หลักการทำงานของ Counting Semaphore
-- [ ] การจัดการ Resource Pool
-- [ ] Load Balancing และ Resource Contention
-- [ ] Performance Monitoring และ Statistics
-- [ ] Rate Limiting Applications
+- [/] หลักการทำงานของ Counting Semaphore
+- [/] การจัดการ Resource Pool
+- [/] Load Balancing และ Resource Contention
+- [/] Performance Monitoring และ Statistics
+- [/] Rate Limiting Applications
 
 ### APIs ที่ใช้:
 - `xSemaphoreCreateCounting()` - สร้าง Counting Semaphore

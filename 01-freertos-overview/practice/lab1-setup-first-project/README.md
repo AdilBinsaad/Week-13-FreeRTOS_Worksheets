@@ -230,10 +230,21 @@ idf.py build
 ## คำถามทบทวหน
 
 1. ไฟล์ใดบ้างที่จำเป็นสำหรับโปรเจกต์ ESP-IDF ขั้นต่ำ?
+- CMakeLists.txt (หลักและใน main/)
+- main/main.c (มี app_main())
+- sdkconfig (สร้างอัตโนมัติหลัง build)
 2. ความแตกต่างระหว่าง `hello_esp32.bin` และ `hello_esp32.elf` คืออะไร?
+- .elf → สำหรับ debug (มี symbol, ใช้กับ GDB)
+- .bin → สำหรับแฟลชลงบอร์ด (รันจริง)
 3. คำสั่ง `idf.py set-target` ทำอะไร?
+- ตั้งค่า target chip เช่น esp32, esp32s3
+- ต้อง fullclean และ build ใหม่หลังเปลี่ยน
 4. โฟลเดอร์ `build/` มีไฟล์อะไรบ้าง?
+- ไฟล์ผลลัพธ์: .elf, .bin, .map
+- CMakeCache.txt, object files, flash args ฯลฯ
 5. การใช้ `vTaskDelay()` แทน `delay()` มีความสำคัญอย่างไร?
+- vTaskDelay() → หน่วงแบบไม่กิน CPU (RTOS scheduler ทำงานได้)
+- delay() → อาจ busy-wait กิน CPU ทำให้ task อื่นไม่รัน
 
 ## บทสรุป
 

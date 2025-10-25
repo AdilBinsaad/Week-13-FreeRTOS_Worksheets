@@ -3,4 +3,4 @@
 cmake_minimum_required(VERSION 3.16)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(task_stack_monitor_demo)
+project(02-3task_stack_monitor_demo)

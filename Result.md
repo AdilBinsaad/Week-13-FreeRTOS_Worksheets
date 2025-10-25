@@ -14,6 +14,7 @@
 ![alt text](image-5.png)
 
 # 02-Lab3
+![alt text](image-22.png)
 
 # 03-LAb1
 ![alt text](image-6.png)

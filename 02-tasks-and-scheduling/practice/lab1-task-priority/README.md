@@ -366,10 +366,17 @@ xTaskCreatePinnedToCore(low_priority_task, "LowPrio", 3072, NULL, 1, NULL, 1);  
 ## คำถามสำหรับวิเคราะห์
 
 1. Priority ไหนทำงานมากที่สุด? เพราะอะไร?
+- Priority สูงสุด (ค่าตัวเลขมากสุด) ทำงานก่อน เพราะ scheduler ของ FreeRTOS เลือก task ที่ priority สูงสุดเสมอ
 2. เกิด Priority Inversion หรือไม่? จะแก้ไขได้อย่างไร?
+- เกิดได้เมื่อ task ต่ำถือ resource แล้ว task สูงต้องรอ
+- แก้โดยใช้ Priority Inheritance (ระบบจะยก priority ของ task ที่ถือ resource ให้ชั่วคราว)
 3. Tasks ที่มี priority เดียวกันทำงานอย่างไร?
+- ทำงานแบบ Round-Robin (สลับกันรันทีละช่วงเวลา ตาม tick)
 4. การเปลี่ยน Priority แบบ dynamic ส่งผลอย่างไร?
+- Scheduler จะจัดลำดับใหม่ทันที ทำให้ task นั้นอาจ รันเร็วขึ้นหรือล่าช้า ตาม priority ใหม่
 5. CPU utilization ของแต่ละ priority เป็นอย่างไร?
+- Task ที่มี priority สูงกว่าใช้ CPU ก่อน
+- ถ้ามี task สูงสุดรันตลอด → task ต่ำจะไม่ได้ CPU เลย (starvation)
 
 ## ผลการทดลองที่คาดหวัง
 
